@@ -28,13 +28,13 @@ import org.joda.time.format.ISOPeriodFormat;
 
 public class IndexMetadata {
 
-    private static Period[] AMOUNTS = new Period[] {
-        Period.minutes(1),
-        Period.hours(1),
-        Period.days(1),
-        Period.weeks(1),
-        Period.months(1),
-        Period.years(1)
+    private static final Period[] AMOUNTS = new Period[]{
+            Period.minutes(1),
+            Period.hours(1),
+            Period.days(1),
+            Period.weeks(1),
+            Period.months(1),
+            Period.years(1)
     };
 
     public enum RETENTION_TYPE {
