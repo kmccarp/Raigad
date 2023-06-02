@@ -60,14 +60,14 @@ public class RaigadServer {
 
     @Inject
     public RaigadServer(IConfiguration config,
-                        RaigadScheduler scheduler,
-                        HttpModule httpModule,
-                        IElasticsearchProcess esProcess,
-                        Sleeper sleeper,
-                        InstanceManager instanceManager,
-                        ElasticsearchIndexManager esIndexManager,
-                        SnapshotBackupManager snapshotBackupManager,
-                        SetVPCSecurityGroupID setVPCSecurityGroupID) {
+            RaigadScheduler scheduler,
+            HttpModule httpModule,
+            IElasticsearchProcess esProcess,
+            Sleeper sleeper,
+            InstanceManager instanceManager,
+            ElasticsearchIndexManager esIndexManager,
+            SnapshotBackupManager snapshotBackupManager,
+            SetVPCSecurityGroupID setVPCSecurityGroupID) {
         this.config = config;
         this.scheduler = scheduler;
         this.httpModule = httpModule;

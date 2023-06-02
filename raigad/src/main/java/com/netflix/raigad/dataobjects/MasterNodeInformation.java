@@ -35,9 +35,9 @@ public class MasterNodeInformation {
 
     @JsonCreator
     public MasterNodeInformation(@JsonProperty("id") final String id,
-                                 @JsonProperty("host") final String host,
-                                 @JsonProperty("ip") final String ip,
-                                 @JsonProperty("node") final String node) {
+            @JsonProperty("host") final String host,
+            @JsonProperty("ip") final String ip,
+            @JsonProperty("node") final String node) {
         this.id = id;
         this.host = host;
         this.ip = ip;

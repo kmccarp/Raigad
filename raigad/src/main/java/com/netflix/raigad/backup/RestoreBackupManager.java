@@ -167,8 +167,8 @@ public class RestoreBackupManager extends Task {
     }
 
     public RestoreSnapshotResponse getRestoreSnapshotResponse(Client esTransportClient, String commaSeparatedIndices,
-                                                              String restoreRepositoryName, String snapshotN,
-                                                              String renamePattern, String renameReplacement) {
+            String restoreRepositoryName, String snapshotN,
+            String renamePattern, String renameReplacement) {
         RestoreSnapshotRequestBuilder restoreSnapshotRequestBuilder;
 
         if (commaSeparatedIndices != null && !commaSeparatedIndices.equalsIgnoreCase(ALL_INDICES_TAG)) {

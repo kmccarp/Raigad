@@ -63,9 +63,9 @@ public class ElasticsearchBackup {
     @GET
     @Path("/do_restore")
     public Response restore(@QueryParam(REST_REPOSITORY_NAME) String repoName,
-                            @QueryParam(REST_REPOSITORY_TYPE) String repoType,
-                            @QueryParam(REST_SNAPSHOT_NAME) String snapName,
-                            @QueryParam(REST_INDICES_NAME) String indicesName) throws Exception {
+            @QueryParam(REST_REPOSITORY_TYPE) String repoType,
+            @QueryParam(REST_SNAPSHOT_NAME) String snapName,
+            @QueryParam(REST_INDICES_NAME) String indicesName) throws Exception {
         logger.info("Running restore through a REST call...");
 
         restoreBackupManager.runRestore(repoName, repoType, snapName, indicesName, null, null);
@@ -76,11 +76,11 @@ public class ElasticsearchBackup {
     @GET
     @Path("/do_restore_with_rename")
     public Response restoreWithRename(@QueryParam(REST_REPOSITORY_NAME) String repoName,
-                                      @QueryParam(REST_REPOSITORY_TYPE) String repoType,
-                                      @QueryParam(REST_SNAPSHOT_NAME) String snapName,
-                                      @QueryParam(REST_INDICES_NAME) String indicesName,
-                                      @QueryParam(REST_RESTORE_RENAME_PATTERN) String renamePattern,
-                                      @QueryParam(REST_RESTORE_RENAME_REPLACEMENT) String renameReplacement) throws Exception {
+            @QueryParam(REST_REPOSITORY_TYPE) String repoType,
+            @QueryParam(REST_SNAPSHOT_NAME) String snapName,
+            @QueryParam(REST_INDICES_NAME) String indicesName,
+            @QueryParam(REST_RESTORE_RENAME_PATTERN) String renamePattern,
+            @QueryParam(REST_RESTORE_RENAME_REPLACEMENT) String renameReplacement) throws Exception {
         logger.info("Running Restore with rename through REST call ...");
 
         restoreBackupManager.runRestore(repoName, repoType, snapName, indicesName, renamePattern, renameReplacement);

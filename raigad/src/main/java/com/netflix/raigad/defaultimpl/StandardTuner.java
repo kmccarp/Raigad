@@ -65,8 +65,7 @@ public class StandardTuner implements IElasticsearchTuner {
         if (config.isVPCExternal()) {
             map.put("network.publish_host", config.getHostIP());
             map.put("http.publish_host", config.getHostname());
-        }
-        else {
+        }else {
             map.put("network.publish_host", "_global_");
         }
 
@@ -112,21 +111,18 @@ public class StandardTuner implements IElasticsearchTuner {
 
             if (config.amIWriteEnabledTribeNode()) {
                 map.put("tribe.blocks.write", false);
-            }
-            else {
+            }else {
                 map.put("tribe.blocks.write", true);
             }
 
             if (config.amIMetadataEnabledTribeNode()) {
                 map.put("tribe.blocks.metadata", false);
-            }
-            else {
+            }else {
                 map.put("tribe.blocks.metadata", true);
             }
 
             map.put("tribe.on_conflict", "prefer_" + config.getTribePreferredClusterIdOnConflict());
-        }
-        else {
+        }else {
             map.put("transport.tcp.port", config.getTransportTcpPort());
             map.put("discovery.zen.hosts_provider", config.getElasticsearchDiscoveryType());
             map.put("discovery.zen.minimum_master_nodes", config.getMinimumMasterNodes());
@@ -142,8 +138,7 @@ public class StandardTuner implements IElasticsearchTuner {
 
             if (config.isMultiDC()) {
                 map.put("node.attr.rack_id", config.getDC());
-            }
-            else {
+            }else {
                 map.put("node.attr.rack_id", config.getRac());
             }
 
@@ -152,18 +147,15 @@ public class StandardTuner implements IElasticsearchTuner {
                     map.put("node.master", true);
                     map.put("node.data", false);
                     map.put("node.ingest", false);
-                }
-                else if ("data".equalsIgnoreCase(config.getStackName())) {
+                }else if ("data".equalsIgnoreCase(config.getStackName())) {
                     map.put("node.master", false);
                     map.put("node.data", true);
                     map.put("node.ingest", false);
-                }
-                else if ("search".equalsIgnoreCase(config.getStackName())) {
+                }else if ("search".equalsIgnoreCase(config.getStackName())) {
                     map.put("node.master", false);
                     map.put("node.data", false);
                     map.put("node.ingest", true);
-                }
-                else {
+                }else {
                     map.put("node.master", false);
                     map.put("node.data", false);
                     map.put("node.ingest", false);

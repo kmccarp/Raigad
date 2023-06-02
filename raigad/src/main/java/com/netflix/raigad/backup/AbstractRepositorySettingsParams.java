@@ -40,7 +40,7 @@ public abstract class AbstractRepositorySettingsParams
 
     public AbstractRepositorySettingsParams(IConfiguration config)
     {
-       this.config = config;
+        this.config = config;
     }
 
     public abstract void setBackupParams() throws CreateRepositoryException;

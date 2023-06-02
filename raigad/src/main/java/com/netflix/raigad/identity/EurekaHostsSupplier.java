@@ -98,14 +98,14 @@ public class EurekaHostsSupplier implements HostSupplier {
 
                                 Host host = new Host(info.getHostName(), info.getPort())
                                         .addAlternateIpAddress(
-                                                StringUtils.join(new String[] { parts[1], parts[2], parts[3],
-                                                        parts[4] }, "."))
+                                                StringUtils.join(new String[]{parts[1], parts[2], parts[3],
+                                                        parts[4]}, "."))
                                         .addAlternateIpAddress(info.getIPAddr())
                                         .setId(info.getId());
 
                                 try {
                                     if (info.getDataCenterInfo() instanceof AmazonInfo) {
-                                        AmazonInfo amazonInfo = (AmazonInfo)info.getDataCenterInfo();
+                                        AmazonInfo amazonInfo = (AmazonInfo) info.getDataCenterInfo();
                                         host.setRack(amazonInfo.get(MetaDataKey.availabilityZone));
                                     }
                                 }

@@ -100,8 +100,7 @@ public class InstanceDataDAOCassandra {
 
         if (config.isEurekaHostSupplierEnabled()) {
             ctx = initWithThriftDriverWithEurekaHostsSupplier();
-        }
-        else {
+        }else {
             ctx = initWithThriftDriverWithExternalHostsSupplier();
         }
 
@@ -157,8 +156,7 @@ public class InstanceDataDAOCassandra {
             if (config.isMultiDC() || config.amISourceClusterForTribeNodeInMultiDC()) {
                 selectClause = String.format("SELECT * FROM %s WHERE %s = '%s' ",
                         CF_NAME_INSTANCES, CN_CLUSTER, cluster);
-            }
-            else {
+            }else {
                 selectClause = String.format("SELECT * FROM %s WHERE %s = '%s' AND %s = '%s' ",
                         CF_NAME_INSTANCES, CN_CLUSTER, cluster, CN_LOCATION, config.getDC());
             }
@@ -231,8 +229,7 @@ public class InstanceDataDAOCassandra {
                 int azCompare = esInstance1.getAvailabilityZone().compareTo(esInstance2.getAvailabilityZone());
                 if (azCompare == 0) {
                     return esInstance1.getId().compareTo(esInstance2.getId());
-                }
-                else {
+                }else {
                     return azCompare;
                 }
             }
@@ -275,8 +272,7 @@ public class InstanceDataDAOCassandra {
         if (result.getResult().size() == 1 && result.getResult().getColumnByIndex(0).getName().equals(instance.getInstanceId())) {
             logger.info("Got lock " + lockKey);
             return;
-        }
-        else {
+        }else {
             throw new Exception(String.format("Cannot insert lock %s", lockKey));
         }
     }

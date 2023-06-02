@@ -72,7 +72,7 @@ public class InjectedWebListener extends GuiceServletContextListener {
             manager.start();
         }
         catch (Exception e) {
-            logger.error(e.getMessage(),e);
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e.getMessage(), e);
         }
 
@@ -100,7 +100,7 @@ public class InjectedWebListener extends GuiceServletContextListener {
     private static class RaigadGuiceModule extends AbstractModule {
         @Override
         protected void configure() {
-    		logger.info("** Binding OSS Config classes.");
+            logger.info("** Binding OSS Config classes.");
 
             // Fix bug in Jersey-Guice integration exposed by child injectors
             binder().bind(GuiceContainer.class).asEagerSingleton();

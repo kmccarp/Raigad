@@ -186,15 +186,15 @@ public class ElasticsearchIndexManager extends Task {
         }
 
         indexStatsMap.keySet().stream()
-            .filter(indexName -> indexMetadata.getIndexNameFilter().filter(indexName))
-            .findFirst()
-            .ifPresent(indexName -> {
-                try {
-                    createIndex(client, indexMetadata.getIndexNameToPreCreate(dateTime));
-                } catch (UnsupportedAutoIndexException e) {
-                    logger.error("Invalid index metadata: " + indexMetadata.toString(), e);
-                }
-            });
+                .filter(indexName -> indexMetadata.getIndexNameFilter().filter(indexName))
+                .findFirst()
+                .ifPresent(indexName -> {
+                    try {
+                        createIndex(client, indexMetadata.getIndexNameToPreCreate(dateTime));
+                    } catch (UnsupportedAutoIndexException e) {
+                        logger.error("Invalid index metadata: " + indexMetadata.toString(), e);
+                    }
+                });
     }
 
     void createIndex(Client client, String indexName) {

@@ -76,8 +76,7 @@ public class PropertiesConfigSource extends AbstractConfigSource
             {
                 logger.info("No Raigad.properties. Ignore!");
             }
-        }
-        else
+        }else
         {
             logger.info("No Raigad.properties. Ignore!");
         }

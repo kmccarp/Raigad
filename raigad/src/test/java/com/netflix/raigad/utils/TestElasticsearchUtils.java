@@ -13,9 +13,11 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestElasticsearchUtils { @org.mockito.Mock
+public class TestElasticsearchUtils {
+    @org.mockito.Mock
 
-    @Mocked IConfiguration config;
+    @Mocked
+    IConfiguration config;
 
     @Test
     public void TestInstanceToJson() {

@@ -63,7 +63,7 @@ public class TestIndexMetadata {
     @Test(expected = JsonMappingException.class)
     public void testBadInputInvalidNamePattern() throws IOException {
         IndexUtils.parseIndexMetadata(
-            "[{\"indexNamePattern\": \"nf_errors_logYYYY\",\"retentionPeriod\":\"P1M\"}]");
+                "[{\"indexNamePattern\": \"nf_errors_logYYYY\",\"retentionPeriod\":\"P1M\"}]");
     }
 
     @Test(expected = JsonParseException.class)
@@ -74,7 +74,7 @@ public class TestIndexMetadata {
     @Test
     public void testFiveMinuteRetention() throws IOException {
         List<IndexMetadata> indexMetadataList = IndexUtils.parseIndexMetadata(
-            "[{\"indexNamePattern\": \"'nf_errors_log'YYYY\",\"retentionPeriod\":\"PT5M\"}]");
+                "[{\"indexNamePattern\": \"'nf_errors_log'YYYY\",\"retentionPeriod\":\"PT5M\"}]");
         IndexMetadata indexMetadata = indexMetadataList.get(0);
         assertEquals(Period.minutes(5), indexMetadata.getRetentionPeriod());
     }
@@ -82,7 +82,7 @@ public class TestIndexMetadata {
     @Test
     public void testOneHourRetention() throws IOException {
         List<IndexMetadata> indexMetadataList = IndexUtils.parseIndexMetadata(
-            "[{\"indexNamePattern\": \"'nf_errors_log'YYYY\",\"retentionPeriod\":\"PT1H\"}]");
+                "[{\"indexNamePattern\": \"'nf_errors_log'YYYY\",\"retentionPeriod\":\"PT1H\"}]");
         IndexMetadata indexMetadata = indexMetadataList.get(0);
         assertEquals(Period.hours(1), indexMetadata.getRetentionPeriod());
     }
@@ -90,7 +90,7 @@ public class TestIndexMetadata {
     @Test
     public void test18MonthRetention() throws IOException {
         List<IndexMetadata> indexMetadataList = IndexUtils.parseIndexMetadata(
-            "[{\"indexNamePattern\": \"'nf_errors_log'YYYY\",\"retentionPeriod\":\"P18M\"}]");
+                "[{\"indexNamePattern\": \"'nf_errors_log'YYYY\",\"retentionPeriod\":\"P18M\"}]");
         IndexMetadata indexMetadata = indexMetadataList.get(0);
         assertEquals(Period.months(18), indexMetadata.getRetentionPeriod());
     }
@@ -98,7 +98,7 @@ public class TestIndexMetadata {
     @Test
     public void testNamePatternOverridesRetentionType() throws IOException {
         List<IndexMetadata> indexMetadataList = IndexUtils.parseIndexMetadata(
-            "[{\"indexNamePattern\": \"'nf_errors_log'YYYY\",\"retentionType\":\"daily\",\"retentionPeriod\":\"P18M\"}]");
+                "[{\"indexNamePattern\": \"'nf_errors_log'YYYY\",\"retentionType\":\"daily\",\"retentionPeriod\":\"P18M\"}]");
         IndexMetadata indexMetadata = indexMetadataList.get(0);
         assertEquals("'nf_errors_log'YYYY", indexMetadata.getIndexNamePattern());
     }
@@ -106,7 +106,7 @@ public class TestIndexMetadata {
     @Test
     public void testNamePatternOverridesIndexName() throws IOException {
         List<IndexMetadata> indexMetadataList = IndexUtils.parseIndexMetadata(
-            "[{\"indexNamePattern\": \"'nf_errors_log'YYYY\",\"indexName\":\"errors\",\"retentionPeriod\":\"P18M\"}]");
+                "[{\"indexNamePattern\": \"'nf_errors_log'YYYY\",\"indexName\":\"errors\",\"retentionPeriod\":\"P18M\"}]");
         IndexMetadata indexMetadata = indexMetadataList.get(0);
         assertEquals("'nf_errors_log'YYYY", indexMetadata.getIndexNamePattern());
     }

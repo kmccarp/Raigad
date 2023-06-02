@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestAbstractConfigSource 
+public class TestAbstractConfigSource
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(TestAbstractConfigSource.class.getName());
 

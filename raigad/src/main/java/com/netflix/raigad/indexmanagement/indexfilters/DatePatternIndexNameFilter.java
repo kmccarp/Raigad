@@ -33,9 +33,9 @@ public class DatePatternIndexNameFilter implements IIndexNameFilter {
             MutableDateTime instant = new MutableDateTime();
             int pos = formatter.parseInto(instant, name, 0);
             return pos > 0
-                && pos == name.length()
-                && checkYear(instant)
-                && reproducible(name, instant);
+                    && pos == name.length()
+                    && checkYear(instant)
+                    && reproducible(name, instant);
         } catch (IllegalArgumentException e) {
             return false;
         }

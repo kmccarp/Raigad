@@ -53,8 +53,8 @@ public interface IRaigadInstanceFactory {
      * @return the new node
      */
     RaigadInstance create(String app, String id, String instanceID,
-                          String hostname, String ip, String rac, String dc,
-                          String asgname, Map<String, Object> volumes);
+            String hostname, String ip, String rac, String dc,
+            String asgname, Map<String, Object> volumes);
 
     /**
      * Delete the server node from the registry

@@ -50,7 +50,7 @@ public class ClearCredential implements ICredential
             props = new Properties();
             props.load(fis);
             AWS_ACCESS_ID = props.getProperty("AWSACCESSID") != null ? props.getProperty("AWSACCESSID").trim() : "";
-            AWS_KEY = props.getProperty("AWSKEY") != null ? props.getProperty("AWSKEY").trim() : "";            
+            AWS_KEY = props.getProperty("AWSKEY") != null ? props.getProperty("AWSKEY").trim() : "";
         }
         catch (Exception e)
         {
@@ -60,10 +60,10 @@ public class ClearCredential implements ICredential
         finally
         {
             try {
-				fis.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+                fis.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
     }
@@ -85,17 +85,17 @@ public class ClearCredential implements ICredential
         return new BasicAWSCredentials(getAccessKeyId(), getSecretAccessKey());
     }
 
-	@Override
-	public AWSCredentialsProvider getAwsCredentialProvider() {
-		return new AWSCredentialsProvider(){
-			public AWSCredentials getCredentials(){
-				return ClearCredential.this.getCredentials();
-			}
+    @Override
+    public AWSCredentialsProvider getAwsCredentialProvider() {
+        return new AWSCredentialsProvider(){
+            public AWSCredentials getCredentials() {
+                return ClearCredential.this.getCredentials();
+            }
 
-			@Override
-			public void refresh() {
-				// NOP				
-			}
-		};
-	}
+            @Override
+            public void refresh() {
+                // NOP				
+            }
+        };
+    }
 }

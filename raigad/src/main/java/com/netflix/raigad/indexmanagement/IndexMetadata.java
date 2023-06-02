@@ -28,13 +28,13 @@ import org.joda.time.format.ISOPeriodFormat;
 
 public class IndexMetadata {
 
-    private static Period[] AMOUNTS = new Period[] {
-        Period.minutes(1),
-        Period.hours(1),
-        Period.days(1),
-        Period.weeks(1),
-        Period.months(1),
-        Period.years(1)
+    private static Period[] AMOUNTS = new Period[]{
+            Period.minutes(1),
+            Period.hours(1),
+            Period.days(1),
+            Period.weeks(1),
+            Period.months(1),
+            Period.years(1)
     };
 
     public enum RETENTION_TYPE {
@@ -76,12 +76,12 @@ public class IndexMetadata {
         String prefix = (indexName == null) ? "" : "'" + indexName + "'";
 
         String namePattern = (indexNamePattern == null)
-            ? prefix + retType.datePattern
-            : indexNamePattern;
+                ? prefix + retType.datePattern
+                : indexNamePattern;
 
         this.indexNamePattern = (indexName == null && indexNamePattern == null)
-            ? null
-            : namePattern;
+                ? null
+                : namePattern;
 
         this.formatter = DateTimeFormat.forPattern(namePattern).withZoneUTC();
         this.indexNameFilter = new DatePatternIndexNameFilter(formatter);

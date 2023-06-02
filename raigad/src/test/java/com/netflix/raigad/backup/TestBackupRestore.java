@@ -169,7 +169,7 @@ public class TestBackupRestore extends ESIntegTestCase {
     }
 
     @Ignore
-    public static class MockElasticsearchTransportClient extends MockUp<ElasticsearchTransportClient>{
+    public static class MockElasticsearchTransportClient extends MockUp<ElasticsearchTransportClient> {
         @Mock
         public static ElasticsearchTransportClient instance(IConfiguration config) {
             return esTransportClient;

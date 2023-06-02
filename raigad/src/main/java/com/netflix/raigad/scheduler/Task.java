@@ -43,7 +43,7 @@ public abstract class Task implements Job, TaskMBean
         ERROR, RUNNING, DONE
     }
     protected final IConfiguration config;
-    
+
     private static final Logger logger = LoggerFactory.getLogger(Task.class);
     private final AtomicInteger errors = new AtomicInteger();
     private final AtomicInteger executions = new AtomicInteger();
@@ -68,7 +68,7 @@ public abstract class Task implements Job, TaskMBean
         }
     }
 
-    
+
     /**
      * This method has to be implemented and cannot thow any exception.
      */
@@ -76,7 +76,7 @@ public abstract class Task implements Job, TaskMBean
     {
         // nothing to intialize
     }
-        
+
     public abstract void execute() throws Exception;
 
     /**
@@ -113,12 +113,12 @@ public abstract class Task implements Job, TaskMBean
     {
         return status;
     }
-    
+
     public int getErrorCount()
     {
         return errors.get();
     }
-    
+
     public int getExecutionCount()
     {
         return executions.get();

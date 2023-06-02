@@ -133,7 +133,7 @@ public class ElasticsearchConfig {
         final Stream<String> pNamesStream = Arrays.stream(pNamesSplit);
         pNamesStream.forEach(
                 (propName) -> {
-                    try{
+                    try {
                         String s = this.configSrc.get(propName);
                         fastPropResults.addProperty(propName, s);
                     } catch (Exception e) {

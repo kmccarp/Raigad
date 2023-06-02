@@ -33,7 +33,8 @@ public class IndexUtils {
      */
     public static List<IndexMetadata> parseIndexMetadata(String serializedIndexMetadata) throws IOException {
         ObjectMapper jsonMapper = new DefaultIndexMapper();
-        TypeReference<List<IndexMetadata>> typeRef = new TypeReference<List<IndexMetadata>>() {};
+        TypeReference<List<IndexMetadata>> typeRef = new TypeReference<List<IndexMetadata>>() {
+        };
         return jsonMapper.readValue(serializedIndexMetadata, typeRef);
     }
 }

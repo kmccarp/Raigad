@@ -39,8 +39,8 @@ public class CassandraInstanceFactory implements IRaigadInstanceFactory {
 
     @Override
     public RaigadInstance create(String app, String id, String instanceID,
-                                 String hostname, String ip, String zone, String dc, String asgName,
-                                 Map<String, Object> volumes) {
+            String hostname, String ip, String zone, String dc, String asgName,
+            Map<String, Object> volumes) {
 
         try {
             logger.info("Creating entry for instance {} (node ID {}, hostname {}, IP {}) in {} ES cluster in {}, {}",
@@ -89,7 +89,7 @@ public class CassandraInstanceFactory implements IRaigadInstanceFactory {
 
             @Override
             public int compare(RaigadInstance esInstance1,
-                               RaigadInstance esInstance2) {
+                    RaigadInstance esInstance2) {
                 int azCompare = esInstance1.getAvailabilityZone().compareTo(
                         esInstance2.getAvailabilityZone());
                 if (azCompare == 0) {

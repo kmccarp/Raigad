@@ -21,7 +21,7 @@ import javax.inject.Inject;
 public class RaigadConfigSource extends CompositeConfigSource {
     @Inject
     public RaigadConfigSource(final PropertiesConfigSource propertiesConfigSource,
-                              final SystemPropertiesConfigSource systemPropertiesConfigSource) {
+            final SystemPropertiesConfigSource systemPropertiesConfigSource) {
         super(propertiesConfigSource, systemPropertiesConfigSource);
     }
 }
