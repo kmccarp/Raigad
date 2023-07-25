@@ -28,7 +28,7 @@ import org.joda.time.format.ISOPeriodFormat;
 
 public class IndexMetadata {
 
-    private static Period[] AMOUNTS = new Period[] {
+    private static final Period[] AMOUNTS = new Period[]{
         Period.minutes(1),
         Period.hours(1),
         Period.days(1),
