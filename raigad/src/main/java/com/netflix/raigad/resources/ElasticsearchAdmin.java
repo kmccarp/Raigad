@@ -100,7 +100,7 @@ public class ElasticsearchAdmin {
     public Response esShardAllocationEnable(@PathParam("type") String type) throws IOException {
         logger.info("Enabling shard allocation through a REST call...");
 
-        if (!type.equalsIgnoreCase("transient") && !type.equalsIgnoreCase("persistent")) {
+        if (!"transient".equalsIgnoreCase(type) && !"persistent".equalsIgnoreCase(type)) {
             throw new IOException("Parameter must be equal to transient or persistent");
         }
 
@@ -120,7 +120,7 @@ public class ElasticsearchAdmin {
     public Response esShardAllocationDisable(@PathParam("type") String type) throws IOException {
         logger.info("Disabling shard allocation through a REST call...");
 
-        if (!type.equalsIgnoreCase("transient") && !type.equalsIgnoreCase("persistent")) {
+        if (!"transient".equalsIgnoreCase(type) && !"persistent".equalsIgnoreCase(type)) {
             throw new IOException("Parameter must be equal to transient or persistent");
         }
 
