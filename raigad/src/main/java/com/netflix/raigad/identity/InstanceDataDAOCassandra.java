@@ -63,15 +63,15 @@ public class InstanceDataDAOCassandra {
     private final Keyspace bootKeyspace;
     private final IConfiguration config;
     private final EurekaHostsSupplier eurekaHostsSupplier;
-    private final String BOOT_CLUSTER;
-    private final String KS_NAME;
+    private static final String BOOT_CLUSTER;
+    private static final String KS_NAME;
     private final int thriftPortForAstyanax;
     private final AstyanaxContext<Keyspace> ctx;
 
     public static final ColumnFamily<String, String> CF_INSTANCES =
-            new ColumnFamily<String, String>(CF_NAME_INSTANCES, StringSerializer.get(), StringSerializer.get());
+            new ColumnFamily<>(CF_NAME_INSTANCES, StringSerializer.get(), StringSerializer.get());
     public static final ColumnFamily<String, String> CF_LOCKS =
-            new ColumnFamily<String, String>(CF_NAME_LOCKS, StringSerializer.get(), StringSerializer.get());
+            new ColumnFamily<>(CF_NAME_LOCKS, StringSerializer.get(), StringSerializer.get());
 
     @Inject
     public InstanceDataDAOCassandra(IConfiguration config, EurekaHostsSupplier eurekaHostsSupplier)
@@ -149,7 +149,7 @@ public class InstanceDataDAOCassandra {
     }
 
     public List<RaigadInstance> getAllInstances(String cluster) {
-        List<RaigadInstance> list = new ArrayList<RaigadInstance>();
+        List<RaigadInstance> list = new ArrayList<>();
 
         try {
             String selectClause;
@@ -251,7 +251,7 @@ public class InstanceDataDAOCassandra {
         ColumnListMutation<String> clm = m.withRow(CF_LOCKS, choosingkey);
 
         // Expire in 6 sec
-        clm.putColumn(instance.getInstanceId(), instance.getInstanceId(), new Integer(6));
+        clm.putColumn(instance.getInstanceId(), instance.getInstanceId(), Integer.valueOf(6));
         m.execute();
         int count = bootKeyspace.prepareQuery(CF_LOCKS).getKey(choosingkey).getCount().execute().getResult();
         if (count > 1) {
@@ -268,7 +268,7 @@ public class InstanceDataDAOCassandra {
         }
 
         clm = m.withRow(CF_LOCKS, lockKey);
-        clm.putColumn(instance.getInstanceId(), instance.getInstanceId(), new Integer(600));
+        clm.putColumn(instance.getInstanceId(), instance.getInstanceId(), Integer.valueOf(600));
         m.execute();
         Thread.sleep(100);
         result = bootKeyspace.prepareQuery(CF_LOCKS).getKey(lockKey).execute();
@@ -397,7 +397,7 @@ public class InstanceDataDAOCassandra {
                 List<Host> hosts = new ArrayList<>();
                 List<String> cassandraHostnames = new ArrayList<>(Arrays.asList(StringUtils.split(config.getCommaSeparatedCassandraHostNames(), ",")));
 
-                if (cassandraHostnames.size() == 0) {
+                if (cassandraHostnames.isEmpty()) {
                     throw new RuntimeException("Cassandra host names can not be blank, at least one host is needed." +
                             "Please use getCommaSeparatedCassandraHostNames() property.");
                 }
